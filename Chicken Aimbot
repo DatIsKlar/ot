@@ -29,7 +29,7 @@ function addition(a,b){
     return(vec)
 }
 
-//distance btween two vectors
+//distance between two vectors
 function distance(a,b){
     var vec = subtract(b,a);
     x = vec[0];
