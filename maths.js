@@ -93,8 +93,8 @@ function Cross(a,b){
 //get and forward vector from an angle like viewangles
 function AngleVectors(angle)
 {   
-	x = Math.cos(DEG2RAD(angle[0]))*Math.cos(DEG2RAD(angle[2]));
-	y = Math.cos(DEG2RAD(angle[0]))*Math.sin(DEG2RAD(angle[2]));;
+	x = Math.cos(DEG2RAD(angle[0]))*Math.cos(DEG2RAD(angle[1]));
+	y = Math.cos(DEG2RAD(angle[0]))*Math.sin(DEG2RAD(angle[1]));;
 	z = -Math.sin(DEG2RAD(angle[0]));
     return ([x,y,z]);
 }
