@@ -1,6 +1,6 @@
 // JavaScript source code
 // JavaScript source code
-var math = require("math.js");
+var math = require("math.js");//imports math function has math. prefix
 UI.AddHotkey( ["Rage","General","General","Key assignment"], "Chicken Aimbot", "Chicken Aimbot");
 UI.AddSliderInt(["Rage","General","General"],"Chicken Aimbot Fov", 0, 180);
 UI.AddCheckbox(["Rage","General","General"],"Chicken Aimbot Silent");
