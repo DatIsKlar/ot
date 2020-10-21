@@ -3,6 +3,9 @@
 UI.AddHotkey( ["Rage","General","General","Key assignment"], "Chicken Aimbot", "Chicken Aimbot");
 UI.AddSliderInt(["Rage","General","General"],"Chicken Aimbot Fov", 0, 180);
 UI.AddCheckbox(["Rage","General","General"],"Chicken Aimbot Silent");
+UI.AddSubTab(["Visuals","SUBTAB_MGR"], "Chicken");
+UI.AddCheckbox(["Visuals", "Chicken","Chicken"],"Chicken ESP");
+UI.AddColorPicker(["Visuals", "Chicken","Chicken"], "Chicken ESP Color");
 
 const IN_JUMP = (1 << 1);
 const IN_ATTACK = (1 << 0); //https://github.com/ValveSoftware/source-sdk-2013/blob/master/mp/src/game/shared/in_buttons.h#L30
@@ -189,7 +192,7 @@ function auto_scope(Player, UserCMD, ticks){
     var scope = Entity.GetProp(Player,"DT_CSPlayer","m_bIsScoped");
     var index = Entity.GetWeapon(Player)
     var classid = Entity.GetClassID(index);
-    if(classid == 260 ||classid == 261 || classid == 241 || classid ==232 ){
+    if(classid == 260 ||classid == 266 || classid == 241 || classid ==232 ){
         if(scope == 0){
             UserCMD.SetButtons(UserCMD.GetButtons | IN_ATTACK2);
             sec_ticks = ticks+1;
@@ -248,6 +251,7 @@ var ticks =0;
 function onCreateMove()
 {
     ticks++;
+
     if(!UI.GetValue(["Rage","General","General","Key assignment", "Chicken Aimbot"]))
         return;
 
@@ -277,18 +281,21 @@ function onCreateMove()
     if(!can_shoot(Player))//checks if you can shoot at the chicken
         return;
    
-    if(!auto_scope(Player,UserCMD,ticks))//checks if scoped
-        return;
-
-    auto_stop(Player,UserCMD);
     
-    var result = Trace.Line(Player, Eye, abs);//checks if the chicken is visable
-    if(result[1]<= 0.9)
-        return;
+    
 
     var viewangle = VectorAngles(subtract(abs,Eye));//calculates the euler anlges of the forward vectors between local player and closet chicken
     var Fov = GetFov(Local.GetViewAngles(),viewangle);
     if(max_fov<Fov)
+        return;
+
+    if(!auto_scope(Player,UserCMD,ticks))//checks if scoped
+        return;
+
+        auto_stop(Player,UserCMD);
+
+    var result = Trace.Line(Player, Eye, abs);//checks if the chicken is visable
+    if(result[1]<= 0.9)
         return;
 
     var weapon_index = Entity.GetWeapon(Player);  
@@ -306,3 +313,23 @@ function onCreateMove()
     }
 }
 Cheat.RegisterCallback("CreateMove", "onCreateMove");
+
+
+function onDraw(){
+    
+    if(!UI.GetValue(["Visuals", "Chicken","Chicken","Chicken ESP"]))
+        return;
+
+    var CChicken = Entity.GetEntitiesByClassID( 36 );
+    var color = UI.GetColor(["Visuals", "Chicken","Chicken","Chicken ESP Color"]);
+    if(CChicken == null)
+        return;
+    var font = Render.AddFont( "Arial.ttf", 15, 800 )
+    
+    for(i =0; i < CChicken.length; i++){
+        var pos  = chicken_abs(CChicken[i]);
+        var world = Render.WorldToScreen(pos)
+        Render.String(world[0]-30,world[1],0, "Chicken",color , font);
+    }
+}
+Cheat.RegisterCallback("Draw", "onDraw")
