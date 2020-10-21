@@ -51,15 +51,15 @@ function Dot(a,b){
 }
 
 //gets length of an forward vector
-function Length(a){
-    x = a[0];
-    y = a[1];
-    z = a[2];
+function Length(forward){
+    x = forward[0];
+    y = forward[1];
+    z = forward[2];
     return Math.sqrt( x * x + y * y + z * z );
 }
 //get the scalar(number) of an forward vector
-function Length2d_Sqr(a){
-    return(a[0]*a[0]+a[1]*a[1]+a[2]*a[2]);
+function Length2d_Sqr(forward){
+    return(forward[0]*forward[0]+forward[1]*forward[1]+forward[2]*forward[2]);
 }
 
 //distance between two points 
