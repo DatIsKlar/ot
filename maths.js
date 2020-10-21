@@ -110,10 +110,10 @@ function NormalizeAngles(angle)
 
     return angle;
 }
-//calculates fov
-function GetFov(viewAngle, aimAngle)
+//calculates the fov between two angles
+function GetFov(viewangle, aimangle)
 {
-	var delta = VectorSubtract(aimAngle,viewAngle);
+	var delta = VectorSubtract(viewangle,aimangle);
 	delta = NormalizeAngles(delta);
 	return Math.sqrt(Math.pow(delta[0], 2.00) + Math.pow(delta[1], 2.00));
 }
