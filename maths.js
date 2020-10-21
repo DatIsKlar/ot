@@ -72,6 +72,8 @@ function Distance(a,b){
 function DEG2RAD(deg){
     return deg*(Math.PI/180);
 }
+
+//produces an vector which is orthogonal(right angle) both vectors
 function Cross(a,b){
     x = a[1]*b[2] - a[2]*b[1];
 	y = a[2]*b[0] - a[0]*b[2];
@@ -87,7 +89,8 @@ function AngleVectors(angle)
     var forward = [x,y,z];
     return forward;
 }
-//normalized and then returns the viewangle
+
+//normalizes and then returns the viewangle
 function NormalizeAngles(angle)
 {
 	while (angle[0] > 89.00)
@@ -104,7 +107,7 @@ function NormalizeAngles(angle)
 
     return angle;
 }
-//calculates fov
+//calculates fov bewteen two angles
 function GetFov(viewAngle, aimAngle)
 {
 	var delta = VectorSubtract(aimAngle,viewAngle);
@@ -112,7 +115,8 @@ function GetFov(viewAngle, aimAngle)
 	return Math.sqrt(Math.pow(delta[0], 2.00) + Math.pow(delta[1], 2.00));
 }
 //straight pasted from source sdk https://github.com/ValveSoftware/source-sdk-2013/blob/master/sp/src/mathlib/mathlib_base.cpp#L535
-//gets the euler angles from an forward vector
+
+//gets the euler(Qangle) angles from an forward vector
 function VectorAngles(forward)
 {
 	var	tmp, yaw, pitch;
