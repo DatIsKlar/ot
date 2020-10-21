@@ -72,6 +72,10 @@ function Distance(a,b){
 function DEG2RAD(deg){
     return deg*(Math.PI/180);
 }
+//converts radians to degrees
+function RAD2DEG(rad){
+    return rad*(180/Math.PI);
+}
 
 //produces an vector which is orthogonal(right angle) both vectors
 function Cross(a,b){
@@ -89,8 +93,7 @@ function AngleVectors(angle)
     var forward = [x,y,z];
     return forward;
 }
-
-//normalizes and then returns the viewangle
+//normalized and then returns the viewangle
 function NormalizeAngles(angle)
 {
 	while (angle[0] > 89.00)
@@ -107,7 +110,7 @@ function NormalizeAngles(angle)
 
     return angle;
 }
-//calculates fov bewteen two angles
+//calculates fov
 function GetFov(viewAngle, aimAngle)
 {
 	var delta = VectorSubtract(aimAngle,viewAngle);
@@ -115,8 +118,7 @@ function GetFov(viewAngle, aimAngle)
 	return Math.sqrt(Math.pow(delta[0], 2.00) + Math.pow(delta[1], 2.00));
 }
 //straight pasted from source sdk https://github.com/ValveSoftware/source-sdk-2013/blob/master/sp/src/mathlib/mathlib_base.cpp#L535
-
-//gets the euler(Qangle) angles from an forward vector
+//gets the euler angles from an forward vector
 function VectorAngles(forward)
 {
 	var	tmp, yaw, pitch;
@@ -159,6 +161,7 @@ exports.Length = Length;
 exports.Length2d_Sqr = Length2d_Sqr;
 exports.Distance = Distance;
 exports.DEG2RAD = DEG2RAD;
+exports.RAD2DEG = RAD2DEG;
 exports.Cross = Cross;
 exports.AngleVectors = AngleVectors;
 exports.NormalizeAngles = NormalizeAngles;
