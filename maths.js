@@ -26,15 +26,6 @@ function VectorMultiply(a,b)
     return ([x,y,z]);
 }
 
-//devides two vector a/b
-function VectorDivide(a,b)
-{
-    x = a[0]/b[0];
-    y = a[1]/b[1];
-    z = a[2]/b[2];
-    return ([x,y,z]);
-}
-
 //multiplication of a vector with an number(scalar)
 function VectorMultiplyScalar(a,b)
 {
