@@ -2,7 +2,7 @@
 /* math.js */
 
 //subtracts two vectors a-b
-function VectorSubtract(a,b)
+function Subtract(a,b)
 {
     x = a[0] - b[0];
     y = a[1] - b[1];
@@ -10,7 +10,7 @@ function VectorSubtract(a,b)
     return([x,y,z])
 }
 //addition of two vectors a+b
-function VectorAdd(a,b)
+function Add(a,b)
 { 
     x = a[0] + b[0];
     y = a[1] + b[1];
@@ -18,7 +18,7 @@ function VectorAdd(a,b)
     return([x,y,z])
 }
 //multiplication of two vectors a*b
-function VectorMultiply(a,b)
+function Multiply(a,b)
 {
     x = a[0]*b[0];
     y = a[1]*b[1];
@@ -26,8 +26,9 @@ function VectorMultiply(a,b)
     return ([x,y,z]);
 }
 
+
 //multiplication of a vector with an number(scalar)
-function VectorMultiplyScalar(a,b)
+function MultiplyScalar(a,b)
 {
     x = a[0]*b;
     y = a[1]*b;
@@ -74,7 +75,8 @@ function RAD2DEG(rad)
 }
 
 //produces an vector which is orthogonal(right angle) both vectors
-function Cross(a,b){
+function Cross(a,b)
+{
     x = a[1]*b[2] - a[2]*b[1];
 	y = a[2]*b[0] - a[0]*b[2];
 	z = a[0]*b[1] - a[1]*b[0];
@@ -117,7 +119,7 @@ function GetFov(viewangle, aimangle)
 function VectorAngles(forward)
 {
 	var	tmp, yaw, pitch;
-	
+
 	if (forward[1] == 0 && forward[0] == 0)
 	{
 		yaw = 0;
@@ -140,11 +142,11 @@ function VectorAngles(forward)
 	return ([pitch,yaw,0]);
 }
 
-exports.VectorSubtract = VectorSubtract;
-exports.VectorAdd = VectorAdd;
-exports.VectorMultiply = VectorMultiply;
-exports.VectorDivide = VectorDivide;
-exports.VectorMultiplyScalar = VectorMultiplyScalar;
+exports.Subtract = Subtract;
+exports.Add = Add;
+exports.Multiply = Multiply;
+exports.Divide = Divide;
+exports.MultiplyScalar = MultiplyScalar;
 exports.Dot = Dot;
 exports.Length = Length;
 exports.Length2d_Sqr = Length2d_Sqr;
