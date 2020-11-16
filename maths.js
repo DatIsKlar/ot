@@ -145,7 +145,6 @@ function VectorAngles(forward)
 exports.Subtract = Subtract;
 exports.Add = Add;
 exports.Multiply = Multiply;
-exports.Divide = Divide;
 exports.MultiplyScalar = MultiplyScalar;
 exports.Dot = Dot;
 exports.Length = Length;
